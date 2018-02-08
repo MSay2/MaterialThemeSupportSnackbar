@@ -15,7 +15,7 @@ Min API: Android Lollipop
 
 # Material Theme Support Snackbar
 
-<a href="https://raw.githubusercontent.com/MSay2/MaterialThemeSupportSnackbar/master/application/MaterialThemeSupportSnackbar.apk" > <img src="screenshot/button_download.png" width="150" height="30"></a>
+<a href="https://raw.githubusercontent.com/MSay2/MaterialThemeSupportSnackbar/master/application/MaterialThemeSupportSnackbar.apk" > <img src="screenshot/button_download.png" width="130" height="50"></a>
 
 # Clone Git Repository
 

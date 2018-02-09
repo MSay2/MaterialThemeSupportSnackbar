@@ -24,13 +24,13 @@ Since the CoordinatorLayout is unsupported, you will need to use the method `avo
 
 To use the  __Above the Snackbar__ function and animate one (or more) view:
 
-```Gradle
+```Java
 Snackbar.make(View view, String message, int duration).above(View my_fab).show();
 ```
 
 Or
 
-```Gradle
+```Java
 Snackbar.make(View view, String message, int duration).above(View my_fab).setAction(String message_button, View.OnClickListener listener).show();
 ```
 
@@ -42,6 +42,11 @@ Snackbar.make(View view, String message, int duration).above(View my_fab).setAct
 # Clone Git Repository
 
 Please refresh build !
+
+# More
+
+For more questions, please create of news _Issues_  
+For join the project, please __Fork__ and create of news __Pull Requests__  
 
 # License
 

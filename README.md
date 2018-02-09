@@ -16,6 +16,25 @@ Min API: Android Lollipop
 > This library does not support the {@CoordinatorLayout} ... this update allows you to animate one (or more) view at the same time as the {@Snackbar}  
 > Exactly like this, you used the {@CoordinatorLayout} (Download the file APK to see an example)  
 
+# Use
+
+The use of this library is exactly the same as the `android.support.design.widget.Snackbar` library. 
+
+Since the CoordinatorLayout is unsupported, you will need to use the method `avobe(View my_fab);`
+
+To use the  __Above the Snackbar__ function and animate one (or more) view:
+
+```Gradle
+Snackbar.make(View view, String message, int duration).above(View my_fab).show();
+```
+
+Or
+
+```Gradle
+Snackbar.make(View view, String message, int duration).above(View my_fab).setAction(String message_button, View.OnClickListener listener).show();
+```
+
+
 # Material Theme Support Snackbar
 
 <a href="https://raw.githubusercontent.com/MSay2/MaterialThemeSupportSnackbar/master/application/MaterialThemeSupportSnackbar.apk" > <img src="screenshot/button_download.png" width="130" height="50"></a>

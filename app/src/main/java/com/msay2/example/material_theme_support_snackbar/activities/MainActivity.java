@@ -53,9 +53,10 @@ public class MainActivity extends Activity
         setContentView(R.layout.activity_main);
 		
 		final LinearLayout root = (LinearLayout)findViewById(R.id.main_root);
+		final LinearLayout layout = (LinearLayout)findViewById(R.id.layout_view);
 		
-		Button button = (Button)findViewById(R.id.id_show_snackbar);
-		button.setOnClickListener(new View.OnClickListener()
+		Button button1 = (Button)findViewById(R.id.button1);
+		button1.setOnClickListener(new View.OnClickListener()
 		{
 			@Override
 			public void onClick(View viewBtn)
@@ -65,9 +66,26 @@ public class MainActivity extends Activity
 					@Override
 					public void onClick(View viewSb)
 					{
-						Toast.makeText(MainActivity.this, "I'm a Toast :D", Toast.LENGTH_LONG).show();
+						Toast.makeText(MainActivity.this, "I'm a Toast, the view is not Above on the Snackbar :@", Toast.LENGTH_LONG).show();
 					}
 				}).show();
+			}
+		});
+		
+		Button button2 = (Button)findViewById(R.id.button2);
+		button2.setOnClickListener(new View.OnClickListener()
+		{
+			@Override
+			public void onClick(View view)
+			{
+				Snackbar.make(root, "Hello :D !", Snackbar.LENGTH_LONG).setAction("Above", new View.OnClickListener()
+				{
+					@Override
+					public void onClick(View mView)
+					{
+						Toast.makeText(MainActivity.this, "I'm a Toast, the view is Above on the Snackbar :D", Toast.LENGTH_LONG).show();
+					}
+				}).above(layout).show();
 			}
 		});
     }

@@ -89,7 +89,12 @@ public final class Snackbar extends BaseTransientBottomBar<Snackbar>
      * @see #setDuration
      */
     public static final int LENGTH_LONG = BaseTransientBottomBar.LENGTH_LONG;
-    /**
+	/**
+	 * Create Variable to join the class {@Snackbar}
+	 */
+	private static Snackbar snackbar;
+	
+	/**
      * Callback class for {@link Snackbar} instances.
      *
      * Note: this class is here to provide backwards-compatible way for apps written before
@@ -155,7 +160,7 @@ public final class Snackbar extends BaseTransientBottomBar<Snackbar>
 
         final LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         final SnackbarContentLayout content = (SnackbarContentLayout)inflater.inflate(R.layout.layout_snackbar_include, parent, false);
-        final Snackbar snackbar = new Snackbar(parent, content, content);
+        snackbar = new Snackbar(parent, content, content);
         snackbar.setText(text);
         snackbar.setDuration(duration);
 
@@ -183,6 +188,17 @@ public final class Snackbar extends BaseTransientBottomBar<Snackbar>
 	{
         return make(view, view.getResources().getText(resId), duration);
     }
+	/**
+	 * Obtain the view above {@Snackbar} and aply the animation to the view.
+	 */
+	@NonNull
+	public static Snackbar above(@NonNull View view)
+	{
+		snackbar.setAbove(true);
+		snackbar.setViewAbove(view);
+
+		return snackbar;
+	}
 
     private static ViewGroup findSuitableParent(View view) 
 	{

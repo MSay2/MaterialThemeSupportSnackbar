@@ -216,6 +216,8 @@ public abstract class BaseTransientBottomBar<B extends BaseTransientBottomBar<B>
     private final ContentViewCallback mContentViewCallback;
 
 	private int mDuration;
+	private boolean aboveValue;
+	private View above;
     private List<BaseCallback<B>> mCallbacks;
 
 	private final AccessibilityManager mAccessibilityManager;
@@ -302,6 +304,38 @@ public abstract class BaseTransientBottomBar<B extends BaseTransientBottomBar<B>
         mDuration = duration;
         return (B)this;
     }
+	
+	/**
+	 * How to activate the view function above the {@Snackbar}
+	 */
+	@NonNull
+	public B setAbove(@NonNull boolean aboved)
+	{
+		aboveValue = aboved;
+		return (B)this;
+	}
+	
+	/**
+	 * How to get a view above the {@Snackbar} 
+	 * 
+	 * And move it according to the animation
+	 */
+	@NonNull
+	public B setViewAbove(@NonNull View above)
+	{
+		this.above = above;
+		return (B)this;
+	}
+	
+	/**
+	 * Return to the variable boolean {@aboveValue}
+	 */
+	@NonNull
+	public boolean isAboved()
+	{
+		return aboveValue == true;
+	}
+	
     /**
      * Return the duration.
      *
@@ -422,43 +456,6 @@ public abstract class BaseTransientBottomBar<B extends BaseTransientBottomBar<B>
 	{
         if (mView.getParent() == null) 
 		{
-            final ViewGroup.LayoutParams lp = mView.getLayoutParams();
-            /*
-			 if (lp instanceof CoordinatorLayout.LayoutParams)
-			 {
-			 // If our LayoutParams are from a CoordinatorLayout, we'll setup our Behavior
-			 final CoordinatorLayout.LayoutParams clp = (CoordinatorLayout.LayoutParams) lp;
-			 final Behavior behavior = new Behavior();
-			 behavior.setStartAlphaSwipeDistance(0.1f);
-			 behavior.setEndAlphaSwipeDistance(0.6f);
-			 behavior.setSwipeDirection(SwipeDismissBehavior.SWIPE_DIRECTION_START_TO_END);
-			 behavior.setListener(new SwipeDismissBehavior.OnDismissListener() {
-			 @Override
-			 public void onDismiss(View view) {
-			 view.setVisibility(View.GONE);
-			 dispatchDismiss(BaseCallback.DISMISS_EVENT_SWIPE);
-			 }
-			 @Override
-			 public void onDragStateChanged(int state) {
-			 switch (state) {
-			 case SwipeDismissBehavior.STATE_DRAGGING:
-			 case SwipeDismissBehavior.STATE_SETTLING:
-			 // If the view is being dragged or settling, pause the timeout
-			 SnackbarManager.getInstance().pauseTimeout(mManagerCallback);
-			 break;
-			 case SwipeDismissBehavior.STATE_IDLE:
-			 // If the view has been released and is idle, restore the timeout
-			 SnackbarManager.getInstance()
-			 .restoreTimeoutIfPaused(mManagerCallback);
-			 break;
-			 }
-			 }
-			 });
-			 clp.setBehavior(behavior);
-			 // Also set the inset edge so that views can dodge the bar correctly
-			 clp.insetEdge = Gravity.BOTTOM;
-			 }
-			 */
             mTargetParent.addView(mView);
         }
         mView.setOnAttachStateChangeListener(new BaseTransientBottomBar.OnAttachStateChangeListener()
@@ -530,7 +527,14 @@ public abstract class BaseTransientBottomBar<B extends BaseTransientBottomBar<B>
         final int viewHeight = mView.getHeight();
 
 		mView.setTranslationY(viewHeight);
+		if (isAboved())
+		{
+			int aboveViewHeight = above.getHeight();
 
+			above.setTranslationY(aboveViewHeight);
+		}
+		
+		final ValueAnimator animatorAboved = new ValueAnimator();
 		final ValueAnimator animator = new ValueAnimator();
 		animator.setIntValues(viewHeight, 0);
 		animator.setInterpolator(AnimatorUtils.getFastOutSlowInInterpolator(mView.getContext()));
@@ -562,12 +566,39 @@ public abstract class BaseTransientBottomBar<B extends BaseTransientBottomBar<B>
 				mPreviousAnimatedIntValue = currentAnimatedIntValue;
 			}
 		});
+		if (isAboved())
+		{
+			animatorAboved.setIntValues(0, -viewHeight);
+			animatorAboved.setInterpolator(AnimatorUtils.getFastOutSlowInInterpolator(mView.getContext()));
+			animatorAboved.setDuration(ANIMATION_DURATION);
+			animatorAboved.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() 
+			{
+				private int previousAboveAnimatedIntValue = viewHeight;
+
+				@Override
+				public void onAnimationUpdate(ValueAnimator animator) 
+				{
+					int currentAboveAnimatedIntValue = (int)animator.getAnimatedValue();
+
+					above.setTranslationY(currentAboveAnimatedIntValue);
+					previousAboveAnimatedIntValue = currentAboveAnimatedIntValue;
+				}
+			});
+		}
+		
 		animator.start();
+		if (isAboved())
+		{
+			animatorAboved.start();
+		}
     }
     private void animateViewOut(final int event) 
 	{
+		int viewHeight = mView.getHeight();
+		
+		final ValueAnimator animatorAboved = new ValueAnimator();
         final ValueAnimator animator = new ValueAnimator();
-		animator.setIntValues(0, mView.getHeight());
+		animator.setIntValues(0, viewHeight);
 		animator.setInterpolator(AnimatorUtils.getFastOutSlowInInterpolator(mView.getContext()));
 		animator.setDuration(ANIMATION_DURATION);
 		animator.addListener(new AnimatorListenerAdapter()
@@ -596,7 +627,31 @@ public abstract class BaseTransientBottomBar<B extends BaseTransientBottomBar<B>
 				mPreviousAnimatedIntValue = currentAnimatedIntValue;
 			}
 		});
+		if (isAboved())
+		{
+			animatorAboved.setIntValues(-viewHeight, 0);
+			animatorAboved.setInterpolator(AnimatorUtils.getFastOutSlowInInterpolator(mView.getContext()));
+			animatorAboved.setDuration(ANIMATION_DURATION);
+			animatorAboved.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+			{
+				private int previousAboveAnimatedIntValue = 0;
+
+				@Override
+				public void onAnimationUpdate(ValueAnimator animator) 
+				{
+					int currentAboveAnimatedIntValue = (int)animator.getAnimatedValue();
+
+					above.setTranslationY(currentAboveAnimatedIntValue);
+					previousAboveAnimatedIntValue = currentAboveAnimatedIntValue;
+				}
+			});
+		}
+		
 		animator.start();
+		if (isAboved())
+		{
+			animatorAboved.start();
+		}
     }
 
     final void hideView(@BaseCallback.DismissEvent final int event)

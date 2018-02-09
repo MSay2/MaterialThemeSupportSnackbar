@@ -11,7 +11,9 @@
 
 ## Information
 
-Min API: Android Lollipop
+Min API: Android Lollipop  
+
+This library does not support the {@CoordinatorLayout} ... this update allows you to animate one (or more) view at the same time as the {@Snackbar} Exactly like this, you used the {@CoordinatorLayout} (Download the file APK to see an example)
 
 # Material Theme Support Snackbar
 

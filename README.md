@@ -5,7 +5,7 @@
 > This project features the `Snackbar` tool from the `android.support.design.widget.Snackbar` library  
 > It includes the tool `Snackbar` and `SnackbarManager`  
 > This project is a port for users of the theme `{@Theme.Material}`  
-> `android.support.design.widget.Snackbar` is a `class` not compatible with the theme{@Theme.Material}  
+> `android.support.design.widget.Snackbar` is a `class` not compatible with the theme {@Theme.Material}  
 > This project makes it compatible but *Only* usable on Android applications using the {@Theme.Material}  
 > This project is a *integrant and complete recovery* of the `android.support.design.widget.Snackbar` library  
 
@@ -13,7 +13,8 @@
 
 Min API: Android Lollipop  
 
-This library does not support the {@CoordinatorLayout} ... this update allows you to animate one (or more) view at the same time as the {@Snackbar} Exactly like this, you used the {@CoordinatorLayout} (Download the file APK to see an example)
+> This library does not support the {@CoordinatorLayout} ... this update allows you to animate one (or more) view at the same time as the {@Snackbar}  
+> Exactly like this, you used the {@CoordinatorLayout} (Download the file APK to see an example)  
 
 # Material Theme Support Snackbar
 

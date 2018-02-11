@@ -31,6 +31,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -54,6 +55,7 @@ public class MainActivity extends Activity
 		
 		final LinearLayout root = (LinearLayout)findViewById(R.id.main_root);
 		final LinearLayout layout = (LinearLayout)findViewById(R.id.layout_view);
+		final EditText edit = (EditText)findViewById(R.id.edittext);
 		
 		Button button1 = (Button)findViewById(R.id.button1);
 		button1.setOnClickListener(new View.OnClickListener()
@@ -83,9 +85,9 @@ public class MainActivity extends Activity
 					@Override
 					public void onClick(View mView)
 					{
-						Toast.makeText(MainActivity.this, "I'm a Toast, the view is Above on the Snackbar :D", Toast.LENGTH_LONG).show();
+						Toast.makeText(MainActivity.this, "I'm a Toast, the multiple views is Above on the Snackbar :D", Toast.LENGTH_LONG).show();
 					}
-				}).above(layout).show();
+				}).above(layout, edit).show();
 			}
 		});
     }

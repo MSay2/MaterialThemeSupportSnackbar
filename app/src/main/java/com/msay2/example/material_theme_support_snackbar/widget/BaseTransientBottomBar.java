@@ -28,6 +28,8 @@ import com.msay2.example.material_theme_support_snackbar.R;
 import com.msay2.example.material_theme_support_snackbar.utils.AnimatorUtils;
 import com.msay2.example.material_theme_support_snackbar.utils.ThemeUtils;
 
+import android.support.annotation.ColorInt;
+import android.support.annotation.ColorRes;
 import android.support.annotation.IntDef;
 import android.support.annotation.IntRange;
 import android.support.annotation.NonNull;
@@ -217,7 +219,7 @@ public abstract class BaseTransientBottomBar<B extends BaseTransientBottomBar<B>
 
 	private int mDuration;
 	private boolean aboveValue;
-	private View above;
+	private View[] aboves;
     private List<BaseCallback<B>> mCallbacks;
 
 	private final AccessibilityManager mAccessibilityManager;
@@ -304,7 +306,6 @@ public abstract class BaseTransientBottomBar<B extends BaseTransientBottomBar<B>
         mDuration = duration;
         return (B)this;
     }
-	
 	/**
 	 * How to activate the view function above the {@Snackbar}
 	 */
@@ -314,19 +315,17 @@ public abstract class BaseTransientBottomBar<B extends BaseTransientBottomBar<B>
 		aboveValue = aboved;
 		return (B)this;
 	}
-	
 	/**
 	 * How to get a view above the {@Snackbar} 
 	 * 
 	 * And move it according to the animation
 	 */
 	@NonNull
-	public B setViewAbove(@NonNull View above)
+	public B setViewAbove(@NonNull View... aboves)
 	{
-		this.above = above;
+		this.aboves = aboves;
 		return (B)this;
 	}
-	
 	/**
 	 * Return to the variable boolean {@aboveValue}
 	 */
@@ -335,7 +334,6 @@ public abstract class BaseTransientBottomBar<B extends BaseTransientBottomBar<B>
 	{
 		return aboveValue == true;
 	}
-	
     /**
      * Return the duration.
      *
@@ -529,9 +527,12 @@ public abstract class BaseTransientBottomBar<B extends BaseTransientBottomBar<B>
 		mView.setTranslationY(viewHeight);
 		if (isAboved())
 		{
-			int aboveViewHeight = above.getHeight();
+			for (int i = 0; i < aboves.length; i++)
+			{
+				int aboveViewHeight = aboves[i].getHeight();
 
-			above.setTranslationY(aboveViewHeight);
+				aboves[i].setTranslationY(aboveViewHeight);
+			}
 		}
 		
 		final ValueAnimator animatorAboved = new ValueAnimator();
@@ -578,10 +579,13 @@ public abstract class BaseTransientBottomBar<B extends BaseTransientBottomBar<B>
 				@Override
 				public void onAnimationUpdate(ValueAnimator animator) 
 				{
-					int currentAboveAnimatedIntValue = (int)animator.getAnimatedValue();
+					for (int i = 0; i < aboves.length; i++)
+					{
+						int currentAboveAnimatedIntValue = (int)animator.getAnimatedValue();
 
-					above.setTranslationY(currentAboveAnimatedIntValue);
-					previousAboveAnimatedIntValue = currentAboveAnimatedIntValue;
+						aboves[i].setTranslationY(currentAboveAnimatedIntValue);
+						previousAboveAnimatedIntValue = currentAboveAnimatedIntValue;
+					}
 				}
 			});
 		}
@@ -639,10 +643,13 @@ public abstract class BaseTransientBottomBar<B extends BaseTransientBottomBar<B>
 				@Override
 				public void onAnimationUpdate(ValueAnimator animator) 
 				{
-					int currentAboveAnimatedIntValue = (int)animator.getAnimatedValue();
+					for (int i = 0; i < aboves.length; i++)
+					{
+						int currentAboveAnimatedIntValue = (int)animator.getAnimatedValue();
 
-					above.setTranslationY(currentAboveAnimatedIntValue);
-					previousAboveAnimatedIntValue = currentAboveAnimatedIntValue;
+						aboves[i].setTranslationY(currentAboveAnimatedIntValue);
+						previousAboveAnimatedIntValue = currentAboveAnimatedIntValue;
+					}
 				}
 			});
 		}

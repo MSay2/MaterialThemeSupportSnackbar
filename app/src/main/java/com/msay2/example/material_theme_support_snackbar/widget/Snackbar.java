@@ -192,10 +192,10 @@ public final class Snackbar extends BaseTransientBottomBar<Snackbar>
 	 * Obtain the view above {@Snackbar} and aply the animation to the view.
 	 */
 	@NonNull
-	public static Snackbar above(@NonNull View view)
+	public static Snackbar above(@NonNull View... views)
 	{
 		snackbar.setAbove(true);
-		snackbar.setViewAbove(view);
+		snackbar.setViewAbove(views);
 
 		return snackbar;
 	}

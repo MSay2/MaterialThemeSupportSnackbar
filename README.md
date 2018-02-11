@@ -31,13 +31,13 @@ Snackbar.make(View view, String message, int duration).above(View my_fab).show()
 Or
 
 ```Gradle
-Snackbar.make(View view, String message, int duration).above(View my_fab, View my_other_view, View my_other_other_view).setAction(String message_button, View.OnClickListener listener).show();
+Snackbar.make(View view, String message, int duration).above(View my_fab).setAction(String message_button, View.OnClickListener listener).show();
 ```
 
-or
+or for of multiple Views in diff hierarchies
 
 ```Gradle
-Snackbar.make(View view, String message, int duration).above(View my_fab).show();
+Snackbar.make(View view, String message, int duration).above(View my_fab, View my_other_view, View my_other_other_view).show();
 ```
 
 Or

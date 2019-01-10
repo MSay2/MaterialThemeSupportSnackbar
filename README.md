@@ -51,6 +51,9 @@ Snackbar.make(View view, String message, int duration).above(View my_fab, View m
 
 <a href="https://raw.githubusercontent.com/MSay2/MaterialThemeSupportSnackbar/master/application/MaterialThemeSupportSnackbar.apk" > <img src="screenshot/button_download.png" width="130" height="50"></a>
 
+# GLITCH-inc
+* This project is also on my site [GLITCH-inc](https://glitch-inc.000webhostapp.com/projects/material_theme_support_snackbar.html)
+
 # Clone Git Repository
 
 Please refresh build !

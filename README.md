@@ -66,7 +66,7 @@ For join the project, please __Fork__ and create of news __Pull Requests__
 # License
 
 ```
-Copyright 2017 MSay2
+Copyright (c) 2019 MSay2
 
 Licensed to the Apache Software Foundation (ASF) under one or more contributor
 license agreements. See the NOTICE file distributed with this work for

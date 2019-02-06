@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="text_size_message">14sp</dimen>
+    <dimen name="spacing_horizontal">0dp</dimen>
+    <dimen name="min_width">-1px</dimen>
+    <dimen name="max_width">-1px</dimen>
+    <dimen name="elevation">6dp</dimen>
+    <dimen name="background_corner_radius">0dp</dimen>
+    <dimen name="padding_horizontal">12dp</dimen>
+    <dimen name="padding_vertical">14dp</dimen>
+    <dimen name="padding_vertical_2lines">24dp</dimen>
+    <dimen name="action_inline_max_width">128dp</dimen>
+
+</resources>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="TextAppearance.Snackbar.Message" parent="android:TextAppearance">
+        <item name="android:textSize">@dimen/text_size_message</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+    </style>
+
+    <style name="Widget.Snackbar" parent="android:Widget">
+        <item name="android:minWidth">@dimen/min_width</item>
+        <item name="android:maxWidth">@dimen/max_width</item>
+        <item name="android:background">@drawable/background_snackbar</item>
+        <item name="android:paddingLeft">@dimen/padding_horizontal</item>
+        <item name="android:paddingRight">@dimen/padding_horizontal</item>
+        <item name="android:elevation">@dimen/elevation</item>
+        <item name="maxActionInlineWidth">@dimen/action_inline_max_width</item>
+    </style>
+
+</resources>

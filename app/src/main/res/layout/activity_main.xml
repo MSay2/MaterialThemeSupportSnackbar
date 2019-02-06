@@ -1,46 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	android:id="@+id/main_root"
-	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	android:gravity="center"
-	android:orientation="vertical">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
 
-	<Button
-		android:id="@+id/button1"
-		android:layout_height="wrap_content"
-		android:layout_width="wrap_content"
-		android:text="Tap on me"/>
+    <Button
+        android:id="@+id/button1"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="Tap on me"/>
 
-	<LinearLayout
-		android:id="@+id/layout_view"
-		android:layout_height="wrap_content"
-		android:layout_width="wrap_content"
-		android:orientation="vertical"
-		android:layout_marginTop="16dp">
+    <LinearLayout
+        android:id="@+id/layout_view"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="16dp">
 
-		<TextView
-			android:layout_height="wrap_content"
-			android:textAppearance="?android:attr/textAppearanceLarge"
-			android:layout_width="wrap_content"
-			android:text="Large Text"/>
+        <TextView
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="wrap_content"
+            android:text="Large Text"/>
 
-		<Button
-			android:id="@+id/button2"
-			style="?android:attr/buttonBarButtonStyle"
-			android:layout_height="wrap_content"
-			android:layout_width="wrap_content"
-			android:text="Tap on me"/>
+        <Button
+            android:id="@+id/button2"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="Tap on me"/>
 
-	</LinearLayout>
+    </LinearLayout>
 
-	<EditText
-		android:layout_height="wrap_content"
-		android:inputType="textPassword"
-		android:layout_width="wrap_content"
-		android:ems="10"
-		android:id="@+id/edittext"/>
+    <EditText
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:layout_width="wrap_content"
+        android:ems="10"
+        android:id="@+id/edittext"/>
 
 </LinearLayout>
-

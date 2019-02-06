@@ -17,6 +17,9 @@ Min API: Android Lollipop
 > Exactly like this, you used the {@CoordinatorLayout} (Download the file APK to see an example)  
 
 # Use
+[![https://jitpack.io/#MSay2/MaterialThemeSupportSnackbar/Tag](https://jitpack.io/v/MSay2/MaterialThemeSupportSnackbar.svg)](https://jitpack.io/#MSay2/MaterialThemeSupportSnackbar)
+
+In your Gradle file `implementation 'com.github.MSay2:MaterialThemeSupportSnackbar:1.0'`.
 
 The use of this library is exactly the same as the `android.support.design.widget.Snackbar` library. 
 
